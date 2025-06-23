@@ -1,4 +1,4 @@
-import { faBars, faBell, faCaretUp, faExclamationTriangle, faPlus, faRightFromBracket, faShoppingCart, faTimesRectangle, faUser, faUserCheck, faUserGear } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faBell, faCaretUp, faPlus, faRightFromBracket, faShoppingCart, faUser, faUserGear } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { Dispatch, lazy, SetStateAction, useContext, useState } from 'react'
 import { AppContext } from '../context'

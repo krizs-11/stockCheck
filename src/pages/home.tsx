@@ -12,15 +12,14 @@ import profilePh6 from '../assets/pf6.jpg'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowTrendUp, faBars, faBasketShopping, faBoxesPacking, faBoxOpen, faCheck, faChessBoard, faCircleChevronLeft, faCircleChevronRight, faDotCircle, faGear, faShield, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { Suspense, useEffect, useRef, useState } from 'react'
-import { width } from '@fortawesome/free-regular-svg-icons/faSquare'
+import { faArrowTrendUp, faBars, faBasketShopping, faBoxesPacking, faBoxOpen, faCheck, faCircleChevronLeft, faCircleChevronRight, faGear, faShield, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import FadeInOnScroll from '../components/fadeInOnScroll'
 
 export default function Home() {
 
-    const [carosuelImages, setCarosuelImages] = useState([
+    const carosuelImages = [
         {
             id: '1',
             Title: 'Stay on top of your inventory with real-time updates',
@@ -45,7 +44,7 @@ export default function Home() {
             subTitle: 'Simplify stock tracking across all your warehouses.',
             imageData: backgroundpot4
         }
-    ])
+    ]
 
     const cardData = [
         {
@@ -120,7 +119,7 @@ export default function Home() {
 
     ]
 
-    const [activeIndex, setActiveIndex] = useState(0)
+    // const [activeIndex, setActiveIndex] = useState(0)
 
 
     const scrollRefs = useRef<HTMLDivElement>(null);
@@ -138,17 +137,17 @@ export default function Home() {
     }, []);
 
 
-    const handleDotClick = (index: number) => {
-        const container = cardRef.current;
-        if (container) {
-            const width = container.offsetWidth;
-            container.scrollTo({
-                left: index * width,
-                behavior: 'smooth',
-            });
-            setActiveIndex(index);
-        }
-    };
+    // const handleDotClick = (index: number) => {
+    //     const container = cardRef.current;
+    //     if (container) {
+    //         const width = container.offsetWidth;
+    //         container.scrollTo({
+    //             left: index * width,
+    //             behavior: 'smooth',
+    //         });
+    //         setActiveIndex(index);
+    //     }
+    // };
 
     const currentrefIndex = useRef(0)
 
@@ -174,7 +173,7 @@ export default function Home() {
 
             index += direction;
             currentrefIndex.current = index
-            setActiveIndex(index)
+            // setActiveIndex(index)
         }, 2000); // increased time to 2s for better UX
 
         return () => clearInterval(imgCaros);
@@ -188,8 +187,8 @@ export default function Home() {
             const scrollLeft = container.scrollLeft;
             const slideWidth = container.offsetWidth;
 
-            const index = Math.round(scrollLeft / slideWidth);
-            setActiveIndex(index);
+            Math.round(scrollLeft / slideWidth);
+            // setActiveIndex(index);
         };
 
         container.addEventListener('scroll', handleScroll);

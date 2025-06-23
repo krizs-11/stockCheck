@@ -1,4 +1,4 @@
-import { lazy, Suspense, useContext, useState } from 'react'
+import { lazy, Suspense, useContext } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 // import SideBar from '../components/sidebar'
 import Home from '../pages/home';
@@ -20,7 +20,7 @@ const Staff = lazy(() => import('../pages/staff'))
 const Sale = lazy(() => import('../pages/sale'))
 const Settings = lazy(() => import('../pages/settings'))
 const SignUp = lazy(() => import('../pages/signUp'))
-const CommonLoader = lazy(() => import('../components/commonLoading'))
+// const CommonLoader = lazy(() => import('../components/commonLoading'))
 
 
 export default function DrawerStack() {

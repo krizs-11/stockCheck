@@ -6,8 +6,8 @@ import { AppContext } from '../context'
 import AuthService from '../services/components/authService'
 import { requestForToken } from '../firebase-config'
 import storage from '../utils/storage'
-import back1 from '../assets/log2.png'
-import { Messaging } from 'firebase/messaging';
+// import back1 from '../assets/log2.png'
+// import { Messaging } from 'firebase/messaging';
 
 export default function Settings() {
     const navigate = useNavigate()

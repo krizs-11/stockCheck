@@ -8,8 +8,8 @@ import AuthService from '../services/components/authService';
 import storage from '../utils/storage';
 import { AppContext } from '../context';
 import { Link, useNavigate } from 'react-router-dom';
-import { CommonToast, setToastRef } from "../services/toastService";
-import CommonToasts from '../components/commonToast';
+import { CommonToast } from "../services/toastService";
+// import CommonToasts from '../components/commonToast';
 import { requestForToken } from '../firebase-config';
 import CommonLoader from '../components/commonLoading';
 
@@ -22,7 +22,7 @@ export default function SignIn() {
     const { setIsLoggedIn, setUserDetails, setIsStoreId } = useContext(AppContext)
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 430);
     const [screen, setScreen] = useState({ otp: false, password: false })
-    const [fcmToken, setFcmToken] = useState('')
+    // const [fcmToken, setFcmToken] = useState('')
     const [buttonloading, setButtonLoading] = useState(false)
     useEffect(() => {
         const handleResize = () => {
@@ -222,7 +222,7 @@ export default function SignIn() {
 
     }
 
-    console.log(fcmToken);
+    // console.log(fcmToken);
 
     return (
         <div className={`flex w-screen h-screen bg-primary `} style={{

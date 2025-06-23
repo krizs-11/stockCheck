@@ -16,7 +16,6 @@ import noNetwork from '../nointernet.json'
 
 const AuthStack = lazy(() => import('./stack/authStack'))
 const DrawerStack = lazy(() => import('./stack/drawerStack'))
-const CommonLoader = lazy(() => import('./components/commonLoading'))
 const CommonToast = lazy(() => import('./components/commonToast'))
 
 

@@ -1,11 +1,11 @@
-import { StrictMode, Suspense } from 'react'
+import { Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Buffer } from 'buffer';
 import CommonLazyLoader from './components/commonLazyLoader.tsx'
-import { messaging } from './firebase-config.ts'
+// import { messaging } from './firebase-config.ts'
 import ErrorBoundary from './components/errorboundary.tsx'
 window.Buffer = Buffer
 
