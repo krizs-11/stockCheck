@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #F69E0A;
+  /* or any color you want */
+}
+
+@theme {
+  --color-primary: #F69E0A;
+  --color-secondary: #3ab7bf;
+}
+
+:root {
+  font-family: 'Work Sans';
+  line-height: 1.5;
+  font-weight: 300;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+  /* Default color */
+  transition: background-color 5000s ease-in-out 0s;
+  /* Prevent autofill background */
+}
+
+input:focus:-webkit-autofill {
+  -webkit-text-fill-color: var(--primary) !important;
+  /* Change text color on focus */
+}
+
+
+
+/* common input style */
+.custom-input {
+  @apply w-full py-3 border border-black h-[40px] pl-3 text-black text-base font-medium outline-none focus:ring-0 transition duration-200 focus:border focus:border-primary focus:text-primary rounded-xl;
+}
+
+/* Hide scrollbar */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+  /* Scrollbar width */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  /* Scrollbar track color */
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  /* Scrollbar thumb color */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+  /* Darker thumb on hover */
+}
+
+/* remove backround color for the  */
+input:-webkit-autofill {
+  background-color: transparent !important;
+  /* Remove background color */
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  /* Force white background */
+  color: inherit !important;
+  /* Keep text color consistent */
+}
+
+.custom-error {
+  @apply text-xs text-red-500 font-medium px-4 py-0 w-[60%] capitalize;
+}
+
+.selected-tab {
+  clip-path: polygon(0 0, 80% 0, 100% 50%, 80% 100%, 0 100%);
+}
+
+.rdrCalendarWrapper .rdrDay.rdrDayToday.rdrDaySelected,
+.rdrCalendarWrapper .rdrDay.rdrDaySelected {
+  background: #F69E0A !important;
+  color: white !important;
+}
+
+.rdrCalendarWrapper .rdrDayNumber span {
+  color: black;
+  font-weight: 500;
+}
+
+/* Hide arrows in number input (for Chrome, Safari, Edge) */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide arrows in Firefox */
+.no-spinner {
+  -moz-appearance: textfield;
+}
+
+
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.fade-up.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.fade-up.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.fade-up.delay-700 {
+  animation-delay: 0.7s;
+}
+
+.fade-up.delay-1000 {
+  animation-delay: 1s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-reset {
+  animation-name: none !important;
+}
+
+
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  /* background-color: #f3f4f7; */
+  /* optional */
+  /* padding: 10px 0; */
+}
+
+.marquee {
+  display: inline-flex;
+  animation: marquee 10s linear infinite;
+}
+
+.marquee span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #F69E0A;
+  padding-right: 50px;
+}
+
+span>i {
+  padding-right: 10px;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.homeBtnhov {
+  background-color: #F69E0A/50;
+}
