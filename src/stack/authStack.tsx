@@ -22,7 +22,7 @@ export default function AuthStack() {
                 <Route path='/signIn' element={<SignIn key={location.key} />} />
                 <Route path="/signUp" element={<SignUp key={location.key} />} />
                 <Route index path="/home" element={<Home key={location.key} />} />
-
+                <Route index path="*" element={<Home key={location.key} />} />
                 {/* <Route path="*" element={<SignUp key={location.key} />} /> */}
                 {/* <Route path="/forgetPassword" element={<OtpScreen />} /> */}
             </Routes>

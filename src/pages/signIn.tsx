@@ -200,16 +200,15 @@ export default function SignIn() {
 
 
     const deviceToken = async () => {
-        await requestForToken().then((tokenGenerated) => {
+        await requestForToken().then(async (tokenGenerated) => {
             console.log("requestForTokenhhhb-->", tokenGenerated);
             if (tokenGenerated) {
                 // setFcmToken(tokenGenerated)
                 console.log("requestForToken--->", tokenGenerated);
-                authLogin(tokenGenerated ? tokenGenerated : '')
+                await authLogin(tokenGenerated ? tokenGenerated : '')
             }
             else {
                 //     console.log("else of the requestForToken");
-
                 CommonToast.show({ type: 'error', message: 'something went wrong' })
             }
         })
@@ -237,7 +236,10 @@ export default function SignIn() {
                 </div>
                 <p className='text-1xl capitalize  text-primary sm:w-[70%] w-[80%] font-medium'>Inventory is a business's stock of goods and materials that are held for sale or use in production. It can include raw materials, work-in-progress, and finished goods.
                 </p>
-                <button className='bg-primary rounded-xl sm:w-[20%] w-[50%] h-10.5 mt-2'>
+                <button className='bg-primary rounded-xl sm:w-[20%] w-[50%] h-10.5 mt-2 hover:bg-amber-300' onClick={() => {
+                    navigation('/home')
+                }
+                }>
                     <p className='text-white capitalize font-bold'>learn more</p>
                 </button>
             </div>}
@@ -441,7 +443,7 @@ export default function SignIn() {
                                 </>}
 
                                 {!formik.values.isEmailScreen && !formik.values.isUpdateScreen &&
-                                    <div className='flex w-full justify-end sm:-ml-30 mt-5 p-0 cursor-pointer  ' onClick={() => {
+                                    <div className='flex justify-end sm:ml-50 mt-5 p-0 cursor-pointer ml-20 ' onClick={() => {
                                         formik.setFieldValue('isEmailScreen', true)
                                     }
                                     }>

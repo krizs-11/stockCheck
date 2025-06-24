@@ -309,7 +309,10 @@ export default function Home() {
                                     <p className='sm:text-5xl text-xl font-light capitalize py-2 fade-up delay-500'>Stay on top of your inventory with real-time updates</p>
                                     <p className='sm:text-2xl  text-[20px] font-meduim capitalize fade-up delay-700 text-gray-100'>Make smarter decisions with data-driven insights.</p>
                                     <div className='sm:flex-row flex flex-col sm:my-3 items-center mt-10 w-full px-5 py-3'>
-                                        <button className='bg-primary rounded-xl px-7 py-2 text-xl font-medium m-0 flex justify-center items-center sm:w-[50%] w-[85%] text-gray-100 hover:bg-amber-400'>
+                                        <button className='bg-primary rounded-xl px-7 py-2 text-xl font-medium m-0 flex justify-center items-center sm:w-[50%] w-[85%] text-gray-100 hover:bg-amber-400' onClick={() => {
+                                            navigate('/signIn')
+                                        }
+                                        }>
                                             <p>Get Started</p>
                                         </button>
                                         <button className='bg-white rounded-xl px-7 py-2 text-xl font-light mx-2 text-gray-600 sm:w-[70%] justify-center items-center w-[85%] sm:mt-0 mt-5 hover:bg-gray-100'>

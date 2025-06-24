@@ -1,5 +1,5 @@
-import { lazy, Suspense, useContext } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { lazy, Suspense, useContext, useEffect } from 'react'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 // import SideBar from '../components/sidebar'
 import Home from '../pages/home';
 // import Product from '../pages/product';
@@ -25,12 +25,22 @@ const SignUp = lazy(() => import('../pages/signUp'))
 
 export default function DrawerStack() {
     console.log("inside of the drawerstack");
+    const navigation = useNavigate()
 
     const location = useLocation()
 
     // const [isExtend, setIsExtend] = useState(false)
 
     const { setExtendTab, extendTab } = useContext(AppContext)
+
+
+    useEffect(() => {
+
+        console.log(location.pathname);
+        if (location.pathname == '/signIn') {
+            navigation('/dashboard', { replace: true })
+        }
+    }, [location])
 
 
     return (
