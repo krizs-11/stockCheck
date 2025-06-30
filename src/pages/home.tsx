@@ -211,6 +211,9 @@ export default function Home() {
     const handleContainerScroll = (index: number) => {
         containerRef.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'end' })
         setActiveTab(index)
+        if (isOpen) {
+            setIsOpen(false)
+        }
     }
     const [isOpen, setIsOpen] = useState(false);
 
@@ -266,7 +269,8 @@ export default function Home() {
 
                     <FontAwesomeIcon
                         icon={isOpen ? faTimes : faBars}
-                        className={`text-3xl ${isOpen ? 'text-gray-300' : 'text-gray-100'} cursor-pointer`}
+                        className={`text-3xl text-gray-100 cursor-pointer transition-transform duration-300 ease-in-out ${isOpen ? 'rotate-180 scale-110' : 'rotate-0 scale-100'
+                            }`}
                         onClick={() => setIsOpen(!isOpen)}
                     />
 
@@ -280,10 +284,22 @@ export default function Home() {
                         }}
                         className="md:hidden fixed top-0 left-0 w-full h-full bg-white/80 z-40 flex flex-col items-center gap-6 justify-center">
                         <nav className="flex flex-col items-center gap-4 text-lg text-gray-600 font-semibold list-none">
-                            <li className="hover:text-primary ">Home</li>
-                            <li className="hover:text-primary">Work</li>
-                            <li className="hover:text-primary">About Us</li>
-                            <li className="hover:text-primary">Contact Us</li>
+                            <li className={`hover:text-primary capitalize text-black ${activeTab == 0 ? 'text-primary' : ''} `} onClick={() => {
+                                handleContainerScroll(0)
+                            }
+                            }>Home</li>
+                            <li className={`hover:text-primary text-black ${activeTab == 1 ? 'text-primary' : ''}`} onClick={() => {
+                                handleContainerScroll(1)
+                            }
+                            }>Work</li>
+                            <li className={`hover:text-primary  text-black ${activeTab == 2 ? 'text-primary' : ''}`} onClick={() => {
+                                handleContainerScroll(2)
+                            }
+                            }>About Us</li>
+                            <li className={`hover:text-primary  text-black ${activeTab == 2 ? 'text-primary' : ''}`} onClick={() => {
+                                handleContainerScroll(3)
+                            }
+                            }>Contact Us</li>
                         </nav>
                     </div>
                 )}

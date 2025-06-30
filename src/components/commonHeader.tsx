@@ -111,11 +111,10 @@ export default function CommonHeader({ onClickButton, name, onChangeText, search
                     } />
                     <p className="text-primary px-5 sm:text-xl max-sm:text-[12px] font-bold">{name ? `${name}List` : ''}</p>
                 </div>
-                <div className='px-5 max-sm:flex sm:hidden self-end'>
+                {!isAddEnable && <div className='px-5 max-sm:flex sm:hidden self-end'>
                     <button type='button'
                         onClick={() => {
                             console.log("inside---->");
-
                             setOpen?.(true);
                             onClickButton(); // ✅ Now it's triggered
                         }}
@@ -123,7 +122,7 @@ export default function CommonHeader({ onClickButton, name, onChangeText, search
                         <FontAwesomeIcon icon={faPlus} className='text-black' />
                         <p className='capitilaize text-gray-700 text-[8px] font-bold px-2'>{`Add ${name}`}</p>
                     </button>
-                </div>
+                </div>}
             </div>
 
             {isSearch && <div className="flex sm:w-[35%] max-sm:hidden items-center justify-center relative">
