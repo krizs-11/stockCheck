@@ -16,6 +16,11 @@ export default function Settings() {
 
     // const [fcmToken, setFcmToken] = useState('')
 
+    function isDesktop() {
+        const ua = navigator.userAgent.toLowerCase();
+        const isMobile = /android|iphone|ipad|mobile|tablet/.test(ua);
+        return isMobile;
+    }
 
     const deviceToken = async () => {
         await requestForToken().then((res) => {
@@ -60,7 +65,7 @@ export default function Settings() {
                     <FontAwesomeIcon icon={faUser} className='text-2xl text-primary px-5' />
                     <p>My Account</p>
                 </div>
-                <div className='flex px-5 py-2 text-xl text-gray-800' onClick={deviceToken}>
+                <div className='flex px-5 py-2 text-xl text-gray-800' onClick={() => isDesktop() ? logOut('') : deviceToken}>
                     <FontAwesomeIcon icon={faRightFromBracket} className='text-2xl text-primary px-5' />
                     <p>Logout</p>
                 </div>

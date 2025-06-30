@@ -90,6 +90,12 @@ export default function CommonHeader({ onClickButton, name, onChangeText, search
         }
     }
 
+    function isDesktop() {
+        const ua = navigator.userAgent.toLowerCase();
+        const isMobile = /android|iphone|ipad|mobile|tablet/.test(ua);
+        return isMobile;
+    }
+
 
     return (
         <div className="w-full max-sm:flex-col sm:flex bg-white sm:h-16 max-sm:h-24 py-3 sticky top-0 shadow-md z-50 grow transition-all ease-in-out duration-200">
@@ -98,7 +104,9 @@ export default function CommonHeader({ onClickButton, name, onChangeText, search
                 <div className='flex justify-center items-center'>
 
                     <FontAwesomeIcon icon={faBars} className="text-black text-xl" onClick={() => {
-                        setExtendTab(!extendTab)
+                        if (!isDesktop()) {
+                            setExtendTab(!extendTab)
+                        }
                     }
                     } />
                     <p className="text-primary px-5 sm:text-xl max-sm:text-[12px] font-bold">{name ? `${name}List` : ''}</p>
@@ -147,14 +155,11 @@ export default function CommonHeader({ onClickButton, name, onChangeText, search
                 </div>}
 
                 <button
-                    onMouseEnter={() => {
-                        setIsOpenSettings(true)
-                    }
-                    }
                     onClick={() => {
                         setIsOpenSettings(!isOpenSettings)
                     }
-                    } className="h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center">
+                    }
+                    className="h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center">
                     <FontAwesomeIcon icon={faUser} className='text-white' />
                 </button>
 
@@ -179,9 +184,9 @@ export default function CommonHeader({ onClickButton, name, onChangeText, search
 
                 <div className="flex items-center justify-end px-5 grow">
                     <FontAwesomeIcon icon={faBell} className="text-gray-700 px-5" />
-                    <div className="h-10 w-10 rounded-full bg-gray-500 flex items-center justify-center">
+                    {/* <div className="h-10 w-10 rounded-full bg-gray-500 flex items-center justify-center">
                         <FontAwesomeIcon icon={faUser} className='text-white' />
-                    </div>
+                    </div> */}
                 </div>
 
             </div>
@@ -198,7 +203,7 @@ export default function CommonHeader({ onClickButton, name, onChangeText, search
                         <FontAwesomeIcon icon={faUserGear} className='text-gray-600' />
                         <p className='px-2 text-primary font-bold text-[14px]'>MyAccount</p>
                     </button>
-                    <button className='flex  items-center' onClick={deviceToken}>
+                    <button className='flex  items-center' onClick={() => isDesktop() ? logOut('') : deviceToken}>
                         <FontAwesomeIcon icon={faRightFromBracket} className='text-gray-600' />
                         <p className='px-2 text-primary font-bold text-[14px]'>Logout</p>
                     </button>

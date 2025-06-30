@@ -229,7 +229,7 @@ export default function SignIn() {
 
     }
 
-    // console.log(fcmToken);
+    console.log("isDesktop()-->", isDesktop());
 
     return (
         <div className={`flex w-screen h-screen bg-primary `} style={{

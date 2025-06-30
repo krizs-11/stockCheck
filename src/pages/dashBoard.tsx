@@ -308,7 +308,7 @@ export default function DashBoard() {
                                     {
                                         dashboardDetails?.products?.newlyadded?.map((item: any, index: number) =>
                                         (
-                                            <tr className='border-b-2 border-gray-200 bg-white text-gray-500 font-medium capitalize text-center text-[13px]'>
+                                            <tr key={index} className='border-b-2 border-gray-200 bg-white text-gray-500 font-medium capitalize text-center text-[13px]'>
                                                 <td className="w-[20%] p-2">{index + 1}</td>
                                                 <td className="w-[25%] p-2">{item?.name}</td>
                                                 <td className="w-[25%] p-2">{item?.quantity}</td>

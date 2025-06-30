@@ -121,7 +121,7 @@ export default function DropDownPicker({
                             setValue((prev) =>
                                 prev.map((data) =>
                                     data.value === item.value
-                                        ? { ...data, selected: true }
+                                        ? { ...data, selected: !item.selected }
                                         : data
                                 )
                             );

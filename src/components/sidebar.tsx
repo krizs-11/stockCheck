@@ -1,10 +1,9 @@
-import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate, useNavigationType, } from 'react-router-dom'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping, faBars, faCoins, faHome, faReceipt, faRightFromBracket, faUserGear } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
-import storage from '../utils/storage'
-import { AppContext } from '../context'
+// import storage from '../utils/storage'
 
 interface SideBarProp {
     setIsExtend: Dispatch<SetStateAction<boolean>>,
@@ -17,11 +16,11 @@ function SideBar({ setIsExtend, extendTab }: SideBarProp) {
 
     const navigation = useNavigate()
 
-    const navigationType = useNavigationType();
+    // const navigationType = useNavigationType();
 
     const location = useLocation()
 
-    const { setIsLoggedIn } = useContext(AppContext)
+    // const { setIsLoggedIn } = useContext(AppContext)
 
     const [screen, setScreen] = useState([
 
@@ -76,14 +75,17 @@ function SideBar({ setIsExtend, extendTab }: SideBarProp) {
         // setIsExtend(!extendTab)
     }, [extendTab])
 
+    let drawerScreens = screen.map((i) => i.name.toLowerCase()) || []
+    drawerScreens = [...drawerScreens, ...['updateuser']]
 
 
     useEffect(() => {
 
-        console.log("inside of the location", location.pathname, navigationType);
         const currentPath = location.pathname.split('/')[1].toLowerCase();
 
-        if (currentPath && currentPath != 'signIn') {
+        // console.log("inside of the location", location.pathname, drawerScreens);
+
+        if (currentPath && drawerScreens.includes(currentPath.toLowerCase())) {
             setScreen((prev) => {
                 return prev.map((item) => ({
                     ...item,
@@ -128,8 +130,27 @@ function SideBar({ setIsExtend, extendTab }: SideBarProp) {
         }
     }
 
+    function isDesktop() {
+        const ua = navigator.userAgent.toLowerCase();
+        const isMobile = /android|iphone|ipad|mobile|tablet/.test(ua);
+        return isMobile;
+    }
+
+
     return (
-        <div className={`bg-primary h-screen overflow-hidden w-full flex flex-col relative `}>
+        <div className={`bg-primary h-screen overflow-hidden w-full flex flex-col relative`}
+            onMouseLeave={() => {
+                if (!isDesktop()) {
+                    setIsExtend(false)
+                }
+            }
+            }
+            onMouseOver={() => {
+                if (!isDesktop()) {
+                    setIsExtend(true)
+                }
+            }
+            }>
 
             <div className=' justify-center flex items-center self-center py-3 w-full'>
                 <FontAwesomeIcon icon={faReceipt} />
@@ -180,7 +201,7 @@ function SideBar({ setIsExtend, extendTab }: SideBarProp) {
             <div className=' flex flex-col w-full self-end items-center justify-center py-3'>
 
 
-                {extendTab &&
+                {/* {extendTab &&
                     <div className='px-5 py-10 cursor-pointer' onClick={() => {
                         storage.removeItem('storeToken')
                         storage.removeItem('storeId')
@@ -188,9 +209,9 @@ function SideBar({ setIsExtend, extendTab }: SideBarProp) {
                         navigation('/signIn', { replace: true }); // Replaces the current entry
                     }}>
                         <p className='text-white font-bold text-xl'>Logout</p>
-                    </div>}
+                    </div>} */}
 
-                <div className={`${extendTab ? 'rotate-180' : 'rotate-0'} transition-all ease-in-out duration-500 flex items-center`}
+                <div className={`${extendTab ? 'rotate-180' : 'rotate-0'} transition-all ease-in-out duration-500 items-center sm:flex hidden`}
                     onClick={() => {
                         // storage.removeItem('storeToken')
                         // storage.removeItem('storeId')

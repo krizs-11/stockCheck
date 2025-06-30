@@ -32,7 +32,7 @@ let limit = 10
 export default function Product() {
 
     const [searchValue, setSearchValue] = useState('')
-    const { storeId, userDetails } = useContext(AppContext)
+    const { storeId, userDetails, extendTab } = useContext(AppContext)
     const [staffList, setStaffList] = useState<any | null>(null)
     const [offsetValues, setOffsetValues] = useState(0)
     const [staffCategory, setStaffCategory] = useState<{
@@ -313,7 +313,7 @@ export default function Product() {
                 }
             />
 
-            <div className='flex fixed items-center self-center sm:w-[95%] max-sm:w-[86%] ml-1 bg-white rounded-xl mt-2 border border-gray-100  '>
+            <div className={`flex fixed items-center self-center ${extendTab ? 'sm:w-[85%]' : 'sm:w-[95%]'} max-sm:w-[86%] ml-1 bg-white rounded-xl mt-2 border border-gray-100 transition-all duration-300 ease-in-out`}>
                 <div className="flex items-center justify-between px-3 py-1 max-sm:w-[70%] sm:w-[95%] rounded-4xl self-center my-1 mx-0.5">
 
                     <div
