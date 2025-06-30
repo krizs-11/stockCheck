@@ -48,7 +48,7 @@ function App() {
       getOneUser()
     }
     else {
-      navigation('/home')
+      // navigation('/home')
       // navigation('/signIn')
     }
   }, [isOnline])

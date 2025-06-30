@@ -116,21 +116,17 @@ export default function SignIn() {
                     storage.setItem('storeToken', isVerifyUser?.accessToken)
                     storage.setItem('storeId', isVerifyUser?.userCrendentials[0]?.id)
                     setUserDetails(isVerifyUser?.userCrendentials[0])
-                    console.log("isVerifyUser?.accessToken", isVerifyUser?.accessToken, isVerifyUser?.userCrendentials[0]?.id);
-
+                    // console.log("isVerifyUser?.accessToken", isVerifyUser?.accessToken, isVerifyUser?.userCrendentials[0]?.id);
                     setIsStoreId(String(isVerifyUser?.userCrendentials[0]?.id))
                     setIsLoggedIn(true)
                     setButtonLoading(false)
-                    window.location.replace('/dashboard'); // 👈 Most reliable method
                     CommonToast.show({ type: 'success', message: 'Logged in successfully' })
                     navigation('/dashboard', { replace: true })
                 }
                 else {
                     CommonToast.show({ type: 'info', message: isVerifyUser?.message })
                 }
-
-
-                console.log("isverifyuser--->", JSON.stringify(isVerifyUser))
+                // console.log("isverifyuser--->", JSON.stringify(isVerifyUser))
             }).catch((error) => {
                 console.log("error in authLogin-->", error);
             })
@@ -198,24 +194,36 @@ export default function SignIn() {
         }
     }
 
+    function isDesktop() {
+        const ua = navigator.userAgent.toLowerCase();
+        const isMobile = /android|iphone|ipad|mobile|tablet/.test(ua);
+        return isMobile;
+    }
 
     const deviceToken = async () => {
-        await requestForToken().then(async (tokenGenerated) => {
-            console.log("requestForTokenhhhb-->", tokenGenerated);
-            if (tokenGenerated) {
-                // setFcmToken(tokenGenerated)
-                console.log("requestForToken--->", tokenGenerated);
-                await authLogin(tokenGenerated ? tokenGenerated : '')
-            }
-            else {
-                //     console.log("else of the requestForToken");
-                CommonToast.show({ type: 'error', message: 'something went wrong' })
-            }
-        })
-            .catch((error) => {
-                console.log("else of the error erques token", error);
-                CommonToast.show({ type: 'error', message: 'something went wrong' })
+        if (isDesktop()) {
+            await authLogin('')
+        }
+        else {
+            await requestForToken().then(async (tokenGenerated) => {
+                console.log("requestForTokenhhhb-->", tokenGenerated);
+                if (tokenGenerated) {
+                    // setFcmToken(tokenGenerated)
+                    console.log("requestForToken--->", tokenGenerated);
+                    await authLogin(tokenGenerated ? tokenGenerated : '')
+                }
+                else {
+                    //     console.log("else of the requestForToken");
+                    CommonToast.show({ type: 'error', message: 'something went wrong' })
+                }
             })
+                .catch((error) => {
+                    console.log("else of the error erques token", error);
+                    CommonToast.show({ type: 'error', message: 'something went wrong' })
+                    authLogin('')
+                })
+        }
+
 
         // if (res) {
 

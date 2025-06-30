@@ -49,7 +49,7 @@ export default function Settings() {
 
     return (
         <div className='w-full flex h-screen '>
-            <div className='w-[50%] py-5'>
+            <div className='sm:w-[50%] py-5 w-full'>
                 <div className='flex px-5 py-2 text-xl text-gray-400 justify-center' >
                     <p className='text-2xl font-medium backdrop-blur-2xl  text-primary drop-shadow-2xl capitalize'>Hi , {userDetails?.name}</p>
                 </div>
@@ -71,7 +71,7 @@ export default function Settings() {
 
 
             </div>
-            <div className='w-[50%] bg-primary rounded-tl-full flex justify-center items-center flex-col'>
+            <div className='w-[50%] bg-primary rounded-tl-full hidden justify-center items-center flex-col sm:flex'>
                 <FontAwesomeIcon icon={faCheck} className='text-white text-9xl' />
                 <p className='text-2xl font-medium backdrop-blur-2xl drop-shadow-2xl'>StockCheck</p>
                 <p className='text-2xl font-medium backdrop-blur-2xl  text-gray-100 drop-shadow-2xl capitalize'>Everything can be Made in one place</p>

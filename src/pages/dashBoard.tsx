@@ -224,8 +224,8 @@ export default function DashBoard() {
                                                             selected: item.id == i.id
                                                         }))
                                                     })
+                                                    getSalesGraphDetails(item.key, false)
                                                     setOpenFilter(false)
-                                                    getSalesGraphDetails(item.key, true)
                                                 }
                                                 } className=' mx-1 my-2  flex px-2 items-center justify-between'>
                                                 <p className={`text-[14px] ${item.selected ? 'text-primary font-bold' : 'text-black font-medium'}`}>{item.name}</p>
